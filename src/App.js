@@ -1,7 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 function App() {
-  return <div>Hello, TrybeWallet!</div>;
+  return (
+    <div>
+      <App />
+    </div>
+  );
 }
 
-export default App;
+export default connect()(App);
