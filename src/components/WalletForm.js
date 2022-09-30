@@ -11,10 +11,12 @@ class WalletForm extends Component {
           <input
             data-testid="value-input"
             type="number"
+            placeholder="Valor"
           />
           <input
             data-testid="description-input"
             type="text"
+            placeholder="Descrição"
           />
           <select data-testid="currency-input">
             { currencies.map((currency) => (
@@ -35,6 +37,11 @@ class WalletForm extends Component {
             <option>Transporte</option>
             <option>Saúde</option>
           </select>
+          <button
+            type="button"
+          >
+            Adicionar despesa
+          </button>
         </form>
       </div>
     );
