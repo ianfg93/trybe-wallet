@@ -1,8 +1,8 @@
 import { GET_USER } from '../actions';
 
 const INITIAL_STATE = {
-  user: {},
-  wallet: {},
+  user: { email: '' },
+  wallet: '',
 };
 
 const user = (state = INITIAL_STATE, action) => {
@@ -10,6 +10,7 @@ const user = (state = INITIAL_STATE, action) => {
   case GET_USER:
     return {
       ...state,
+      email: action.payload,
     };
   default:
     return state;

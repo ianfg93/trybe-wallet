@@ -1,16 +1,9 @@
-import { GET_WALLET } from '../actions';
-
 const INITIAL_STATE = {
-  user: {},
-  wallet: {},
+  wallet: 0,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case GET_WALLET:
-    return {
-      ...state,
-    };
   default:
     return state;
   }
