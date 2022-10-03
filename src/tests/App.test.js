@@ -13,13 +13,20 @@ describe('Desenvolva testes para atingir 60% de cobertura total da aplicação',
 
     const { pathname } = history.location;
     const testEmail = screen.getByTestId('email-input');
+    const placePassword = screen.getByPlaceholderText('Senha');
+    const placeEmail = screen.getByPlaceholderText('Email');
     const testPassword = screen.getByTestId('password-input');
     const button = screen.getByRole('button', { name: 'Entrar' });
 
     expect(pathname).toBe('/');
     expect(testEmail).toBeInTheDocument();
+    expect(placeEmail).toBeInTheDocument();
+    expect(screen.getByText('E-mail:')).toBeInTheDocument();
     expect(testPassword).toBeInTheDocument();
+    expect(placePassword).toBeInTheDocument();
+    expect(screen.getByText('Senha:')).toBeInTheDocument();
     expect(button).toBeInTheDocument();
+    expect(button).toBeDisabled();
 
     userEvent.click(screen.getByRole('button'));
     userEvent.type(testEmail, email);
