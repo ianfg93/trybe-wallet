@@ -3,6 +3,7 @@ export const GET_WALLET = 'GET_WALLET';
 export const REQUEST_API = 'REQUEST_API';
 export const REQUEST = 'REQUEST';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const getUser = (payload) => ({
   type: GET_USER,
@@ -16,6 +17,11 @@ export const requestApi = () => ({
 export const request = (moedas) => ({
   type: REQUEST,
   payload: Object.keys(moedas).filter((currency) => currency !== 'USDT'),
+});
+
+export const removeExpense = (payload) => ({
+  type: REMOVE_EXPENSE,
+  payload,
 });
 
 export const reqApi = () => async (dispatch) => {
