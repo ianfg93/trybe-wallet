@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Header extends Component {
-  // somaValor = () => {
-  //   const { expenses } = this.props;
-  //   const soma = expenses.reduce((acc, curr) => {
-  //     const moeda = curr.currency;
-  //     const valor = Number(curr.exchangeRates[moeda].ask) * Number(curr.value);
-  //     return acc + Number(valor);
-  //   }, 0);
-  //   return Number(soma).toFixed(2);
-  // };
+  somaValor = () => {
+    const { expenses } = this.props;
+    const soma = expenses.reduce((acc, curr) => {
+      const moeda = curr.currency;
+      console.log(expenses);
+      const valor = Number(curr.exchangeRates[moeda].ask) * Number(curr.value);
+      // console.log(valor);
+      return acc + Number(valor);
+    }, 0);
+    return Number(soma).toFixed(2);
+  };
 
   render() {
     const { email } = this.props;
@@ -19,8 +21,7 @@ class Header extends Component {
       <div>
         <p data-testid="email-field">{email}</p>
         <p data-testid="total-field">
-          0
-          {/* { this.somaValor() } */}
+          { this.somaValor() }
         </p>
         <p data-testid="header-currency-field">BRL</p>
       </div>

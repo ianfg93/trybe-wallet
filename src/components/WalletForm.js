@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { reqAddExpense } from '../redux/actions';
+import { reqApi, reqAddExpense } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -22,8 +22,7 @@ class WalletForm extends Component {
     const { salvarDespesas } = this.props;
     const { id, value, description, currency, method, tag } = this.state;
     this.setState((state) => ({
-      id: state.id + 1,
-    }));
+      id: state.id + 1 }));
 
     salvarDespesas({ id, value, description, currency, method, tag });
     this.setState({
@@ -46,7 +45,7 @@ class WalletForm extends Component {
             <input
               name="value"
               data-testid="value-input"
-              type="number"
+              type="text"
               placeholder="Valor"
               value={ value }
               onChange={ this.handleChange }
@@ -107,7 +106,7 @@ class WalletForm extends Component {
           </label>
           <button
             type="button"
-            onClick={ () => this.handleCLick }
+            onClick={ this.handleCLick }
           >
             Adicionar despesa
           </button>
@@ -118,7 +117,8 @@ class WalletForm extends Component {
 }
 
 WalletForm.propTypes = {
-  currencies: PropTypes.string,
+  currencies: PropTypes.string.isRequired,
+  reqMoedas: PropTypes.func.isRequired,
 }.isRequired;
 
 const mapStateToProps = (state) => ({
@@ -126,6 +126,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  reqMoedas: () => dispatch(reqApi()),
   salvarDespesas: (expense) => dispatch(reqAddExpense(expense)),
 });
 

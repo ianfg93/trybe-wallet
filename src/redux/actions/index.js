@@ -28,8 +28,8 @@ export const reqApi = () => async (dispatch) => {
 export const addExpense = (expense, exchange) => ({
   type: ADD_EXPENSE,
   payload: {
-    ...expense,
-    exchangeRates: exchange,
+    ...exchange,
+    exchangeRates: expense,
   },
 });
 
