@@ -6,9 +6,8 @@ class Header extends Component {
   somaValor = () => {
     const { expenses } = this.props;
     const soma = expenses.reduce((acc, curr) => {
-      const moeda = curr.currency;
       console.log(expenses);
-      const valor = Number(curr.exchangeRates[moeda].ask) * Number(curr.value);
+      const valor = Number(curr.exchangeRates[curr.currency].ask) * Number(curr.value);
       // console.log(valor);
       return acc + Number(valor);
     }, 0);
@@ -21,7 +20,7 @@ class Header extends Component {
       <div>
         <p data-testid="email-field">{email}</p>
         <p data-testid="total-field">
-          { this.somaValor() }
+          {this.somaValor()}
         </p>
         <p data-testid="header-currency-field">BRL</p>
       </div>
@@ -29,13 +28,14 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({ user, wallet }) => ({
-  email: user.email,
-  expenses: wallet.expenses,
+const mapStateToProps = (state) => ({
+  email: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
   email: PropTypes.string,
+  expenses: PropTypes.shape(),
 }.isRequired;
 
 export default connect(mapStateToProps)(Header);

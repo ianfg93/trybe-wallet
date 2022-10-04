@@ -22,7 +22,8 @@ class WalletForm extends Component {
     const { salvarDespesas } = this.props;
     const { id, value, description, currency, method, tag } = this.state;
     this.setState((state) => ({
-      id: state.id + 1 }));
+      id: state.id + 1,
+    }));
 
     salvarDespesas({ id, value, description, currency, method, tag });
     this.setState({
@@ -65,14 +66,13 @@ class WalletForm extends Component {
           <label htmlFor="currency">
             Moeda:
             <select
+              name="currency"
               data-testid="currency-input"
               value={ currency }
               onChange={ this.handleChange }
             >
-              { currencies.map((e) => (
-                <option key={ e }>
-                  { e }
-                </option>
+              {currencies.map((e) => (
+                <option key={ e.id }>{e}</option>
               ))}
             </select>
           </label>
@@ -104,10 +104,7 @@ class WalletForm extends Component {
               <option>Saúde</option>
             </select>
           </label>
-          <button
-            type="button"
-            onClick={ this.handleCLick }
-          >
+          <button type="button" onClick={ this.handleCLick }>
             Adicionar despesa
           </button>
         </form>
